@@ -1,0 +1,34 @@
+create table Autor(
+                      id uuid not null primary key,
+                      nome varchar(100) not null,
+                      data_nascimento date not null,
+                      nacionalidade varchar(50) not null,
+                      data_cadastro timestamp,
+                      data_atualizacao timestamp,
+                      id_usuario uuid
+);
+
+create table Livro(
+                      id uuid not null primary key,
+                      isbn varchar(100) unique not null,
+                      titulo varchar(150) not null,
+                      data_publicacao date not null,
+                      genero varchar(30) not null,
+                      preco numeric(18, 2),
+                      data_cadastro timestamp,
+                      data_atualizacao timestamp,
+                      id_usuario uuid,
+                      id_autor uuid not null references autor(id)
+                          constraint chk_genero check(genero in('FICCAO', 'FANTASIA', 'MISTERIO', 'ROMANCE', 'BIOGRAFIA', 'CIENCIA'))
+);
+
+
+create table Usuario(
+    id uuid not null primary key,
+    login varchar(20) not null,
+    senha varchar(300) not null,
+    roles varchar[]
+)
+
+select * from Autor
+select * from Livro

@@ -1,0 +1,6 @@
+CREATE TABLE  PRODUTOS (
+    id varchar(255) NOT NULL PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL,
+    descricao VARCHAR(300),
+    preco DECIMAL(10, 2) NOT NULL
+);
